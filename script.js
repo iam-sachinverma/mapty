@@ -14,68 +14,93 @@ const inputElevation = document.querySelector('.form__input--elevation');
 // Global Var
 let map, mapEvent;
 
-if (navigator.geolocation)
-  navigator.geolocation.getCurrentPosition(
-    function (position) {
-      const { latitude } = position.coords;
-      const { longitude } = position.coords;
+class App {
+  // private data member
+  #map;
+  #mapEvent;
 
-      const coords = [latitude, longitude];
-      map = L.map('map').setView(coords, 13);
-      // console.log(map);
+  constructor() {
+    this._getPosition();
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }).addTo(map);
+    //.bind(this) always helpfull when working with event in an classes
+    form.addEventListener('submit', this._newWorkout.bind(this));
 
-      L.marker(coords)
-        .addTo(map)
-        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        .openPopup();
+    // change event for selectBox
+    // * make 1 visble and other hidden
+    inputType.addEventListener('change', this._toggleElevationField);
+  }
 
-      // Handling clicks on maps
-      map.on('click', function (mapE) {
-        mapEvent = mapE;
-        form.classList.remove('hidden');
-        inputDistance.focus();
-      });
-    },
+  _getPosition() {
+    /* 
+     
+     this._loadMap throw error because this._loadMap is a regular function and in regular
+     func  this_keyword  is set to undefined by default 
+     we have maually bind  this_keyword  with this._loadMap method using bind() method
 
-    function () {
-      alert('Could not get your position');
+    */
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        this._loadMap.bind(this),
+        function () {
+          alert('Could not get your position');
+        }
+      );
     }
-  );
+  }
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
+  _loadMap(position) {
+    const { latitude } = position.coords;
+    const { longitude } = position.coords;
 
-  inputDistance.value =
-    inputDuration.value =
-    inputCadence.value =
-    inputElevation.value =
-      '';
+    console.log(this);
 
-  console.log(mapEvent);
-  const { lat, lng } = mapEvent.latlng;
-  L.marker([lat, lng])
-    .addTo(map)
-    .bindPopup(
-      L.popup({
-        maxWidth: 300,
-        minWidth: 100,
-        autoClose: false,
-        closeOnClick: false,
-        className: 'running-popup',
-      })
-    )
-    .setPopupContent('Workout')
-    .openPopup();
-});
+    const coords = [latitude, longitude];
+    this.#map = L.map('map').setView(coords, 13);
 
-// change event for selectBox
-// * make 1 visble and other hidden
-inputType.addEventListener('change', function () {
-  inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
-  inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
-});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(this.#map);
+
+    // Handling clicks on maps
+    this.#map.on('click', this._showForm.bind(this));
+  }
+
+  _showForm(mapE) {
+    this.#mapEvent = mapE;
+    form.classList.remove('hidden');
+    inputDistance.focus();
+  }
+
+  _toggleElevationField() {
+    inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
+    inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
+  }
+
+  _newWorkout(e) {
+    e.preventDefault();
+
+    inputDistance.value =
+      inputDuration.value =
+      inputCadence.value =
+      inputElevation.value =
+        '';
+
+    const { lat, lng } = this.#mapEvent.latlng;
+    L.marker([lat, lng])
+      .addTo(this.#map)
+      .bindPopup(
+        L.popup({
+          maxWidth: 300,
+          minWidth: 100,
+          autoClose: false,
+          closeOnClick: false,
+          className: 'running-popup',
+        })
+      )
+      .setPopupContent('Workout')
+      .openPopup();
+  }
+}
+
+const app = new App();
