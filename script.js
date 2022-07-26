@@ -72,15 +72,19 @@ class App {
   #workouts = [];
 
   constructor() {
+    // Get User Location
     this._getPosition();
+
+    // Get data from local Storage
+    this._getLocalStorage();
+
+    // Attach Event handlers
 
     //.bind(this) always helpfull when working with event in an classes
     form.addEventListener('submit', this._newWorkout.bind(this));
-
     // change event for selectBox
     // * make 1 visble and other hidden
     inputType.addEventListener('change', this._toggleElevationField);
-
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
   }
 
@@ -128,6 +132,11 @@ class App {
 
     // Handling clicks on maps
     this.#map.on('click', this._showForm.bind(this));
+
+    // render old marker
+    this.#workouts.forEach(work => {
+      this._renderWorkoutMarker(work);
+    });
   }
 
   _showForm(mapE) {
@@ -208,7 +217,7 @@ class App {
     this._renderWorkoutMarker(workout);
 
     // render woorkout on list
-    this._renderWorkouk(workout);
+    this._renderWorkout(workout);
 
     // Hide form + clear input fields
     this._hideForm();
@@ -235,7 +244,7 @@ class App {
       .openPopup();
   }
 
-  _renderWorkouk(workout) {
+  _renderWorkout(workout) {
     let html = `
       <li class="workout workout--${workout.type}" data-id="${workout.id}">
         <h2 class="workout__title">${workout.description}</h2>
@@ -306,11 +315,24 @@ class App {
       },
     });
 
-    workout.click();
+    // workout.click(); // give error because object lose prototype chnage when come from localStaroge
   }
 
   _setLocalStorage() {
     localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+  }
+
+  _getLocalStorage() {
+    const data = JSON.parse(localStorage.getItem('workouts'));
+    console.log(data);
+
+    if (!data) return;
+
+    this.#workouts = data;
+
+    this.#workouts.forEach(work => {
+      this._renderWorkout(work);
+    });
   }
 }
 
