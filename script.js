@@ -213,7 +213,8 @@ class App {
     // Hide form + clear input fields
     this._hideForm();
 
-    // Dipslay master
+    // Set local storage to all workouts
+    this._setLocalStorage();
   }
 
   _renderWorkoutMarker(workout) {
@@ -306,6 +307,10 @@ class App {
     });
 
     workout.click();
+  }
+
+  _setLocalStorage() {
+    localStorage.setItem('workouts', JSON.stringify(this.#workouts));
   }
 }
 
