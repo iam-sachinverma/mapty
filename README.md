@@ -1,32 +1,30 @@
-<div id="top"></div>
+<!-- PROJECT SHIELDS -->
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+<p align="center">
+  <a href="https://meraworkout.netlify.app/">
+    <img src="./src/images/logo.png" alt="Logo" width="100px" height="50px">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Mapty</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+   A Map application made with JavaScript to store workouts.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="#about-the-project"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://meraworkout.netlify.app/">View Demo</a>
+<!--     ·
+    <a href="#>Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="#>Request Feature</a> -->
   </p>
-</div>
-
-
+</p>
 
 <!-- TABLE OF CONTENTS -->
-<details>
+<details open="open">
   <summary>Table of Contents</summary>
   <ol>
     <li>
@@ -45,47 +43,104 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://meraworkout.netlify.app/)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
+Mapty is a vanilla JavaScript application that interacts with the Leaflet library and display Map. This app uses modern JavaScript tools, such as Webpack to bundle the modules, and Babel to convert ES6, ES7 and ES8 back to ES5. The user can add workouts for running and cycling and these are stored via local storage.
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+This app is built with pure vanilla JavaScript along with HTML and SCSS. It uses webpack as module bundler and NPM as package manager.
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+<!-- - [SCSS](https://sass-lang.com/) -->
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/javascript)
+<!-- - [Webpack](https://webpack.js.org/) -->
+<!-- - [NPM](https://www.npmjs.com/) -->
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<!-- GETTING STARTED -->
 
+## Getting Started
 
+To get started with project just simply fork this repo or download locally on your System.
+
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+Start with the latest version of NPM to avoid any errors:
+
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+1. Get Leaflet library [Leaflet](https://leafletjs.com/)
+2. Clone the repo
+   ```sh
+   git clone https://github.com/iam-sachinverma/mapty
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+
+<!-- USAGE EXAMPLES -->
+
+## Usage
+
+1. Add workouts near to your Geo location.
+
+2. Add workouts to bookmarks to view it later.
+
+3. Click on workouts to see it's location.
+
+<!-- ROADMAP -->
+
+## Roadmap
+
+See the [open issues](https://github.com/iam-sachinverma/mapty/issues) for a list of proposed features (and known issues).
+
+### Proposed features
+
+1. Ability to edit a workout.
+
+2. Ability to delete a workout.
+
+3. Ability to delete all workouts.
+
+4. Ability to sort workouts by a certain field (e.g. distance).
+
+5. Re-build Running and Cycling objects coming from Local Storage.
+
+6. More realistic error and confirmation messages.
+
+7. Ability to position the map to show all workouts.
+
+8. Ability to draw lines and shapes instead of just points.
+
+9. Geocode location from coordinates (“Run in Shoghi, Shimla).
+
+10. Display weather data for workout time and place.
+
+<!-- CONTRIBUTING -->
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<!-- LICENSE -->
