@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://meraworkout.netlify.app/">
     <!-- <img src="https://drive.google.com/file/d/1nOnGXcXUoa9ukQfWi1sjbJSeuI6UtICO/view?usp=sharing" alt="Logo" width="100px" height="50px"> -->
-    ![LOGO](_logo.png)
+    ![LOGO!](_logo.png)
   </a>
 
   <h3 align="center">Mapty</h3>
