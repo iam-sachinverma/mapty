@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://meraworkout.netlify.app/">
   
-    ![_logo](/logo.png)
+    ![_logo](/logo.jpg)
     
   </a>
   
