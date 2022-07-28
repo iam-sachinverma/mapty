@@ -4,10 +4,11 @@
 <br />
 <p align="center">
   <a href="https://meraworkout.netlify.app/">
-    <!-- <img src="https://drive.google.com/file/d/1nOnGXcXUoa9ukQfWi1sjbJSeuI6UtICO/view?usp=sharing" alt="Logo" width="100px" height="50px"> -->
-    ![LOGO!](_logo.png)
+  
+    ![_logo](https://user-images.githubusercontent.com/83693262/181572749-22e1fee2-305b-4548-a6ee-172b9903130e.png)
+    
   </a>
-
+  
   <h3 align="center">Mapty</h3>
 
   <p align="center">
